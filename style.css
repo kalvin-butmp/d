@@ -1,0 +1,131 @@
+/* Corps de page */
+body {
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Bandeau */
+header {
+  background-color: #005baa;
+  color: white;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+.header-logos {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 60px;
+  padding: 0 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.logo-mp {
+  height: 100px;
+  width: auto;
+}
+
+.logo-amu {
+  height: 90px;
+  width: auto;
+}
+
+/* Réseaux sociaux */
+.social-logos {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-logo {
+  width: 30px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.social-logo:hover {
+  transform: scale(1.2);
+}
+
+/* Bandeau image */
+.bandeau-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 0;
+}
+
+/* Contenu principal */
+main {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+h2 {
+  font-size: 30px;
+  color: #005baa;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Section d’images */
+.images-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.image-box {
+  flex: 1 1 45%;
+  text-align: center;
+}
+
+.project-image {
+  width: 110%;
+  max-width: 440px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: contain;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.project-image:hover {
+  transform: scale(1.7);
+  z-index: 5;
+  position: relative;
+}
+
+.caption {
+  font-size: 18px;
+  color: #333;
+  margin-top: 12px;
+}

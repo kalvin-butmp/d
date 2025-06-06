@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Avancement du Projet</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <style>
+    /* PDF viewer container */
+    #pdf-viewer {
+      width: 100%;
+      max-width: 800px;
+      height: 700px;
+      overflow-y: scroll;
+      margin: 60px auto 100px auto;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    #pdf-viewer canvas {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Bandeau -->
+<header>
+  <div class="header-logos">
+    <a href="https://iut.univ-amu.fr/fr/formations/bachelor-universitaire-de-technologie/but-mesures-physiques" target="_blank">
+      <img src="mp-logo.png" alt="Logo MP" class="logo-mp" />
+    </a>
+    <h1>Département Mesure Physique - Aix Marseille Université</h1>
+    <a href="https://ent.univ-amu.fr/" target="_blank">
+      <img src="amu-logo.png" alt="Logo AMU" class="logo-amu" />
+    </a>
+  </div>
+
+  <div class="social-logos">
+    <a href="https://www.instagram.com/bde_mp_marseille?igsh=cDRmN3IzdWI5aDAw" target="_blank">
+      <img src="logoinsta.png" alt="Logo Instagram" class="social-logo" />
+    </a>
+    <a href="https://www.facebook.com/IUTMars/" target="_blank">
+      <img src="logofacebook.png" alt="Logo Facebook" class="social-logo" />
+    </a>
+  </div>
+</header>
+
+<!-- Image bandeau -->
+<div class="bandeau-image">
+  <img src="bandeau.jpg" alt="Image paysage" />
+</div>
+
+<main>
+  <h2>Voici des documents et images résumant l'avancement du projet</h2>
+
+  <!-- Deux images côte à côte -->
+  <div class="images-container">
+    <div class="image-box">
+      <img src="doc1.jpg" alt="Document 1" class="project-image" />
+      <p class="caption">Constitution électrique d’une enceinte</p>
+    </div>
+    <div class="image-box">
+      <img src="doc2.jpg" alt="Document 2" class="project-image" />
+      <p class="caption">Design du premier boîtier</p>
+    </div>
+  </div>
+
+  <h2 style="text-align: center; margin-top: 60px;">Et voici le début de la fin du prototype</h2>
+
+  <div class="images-container">
+    <div class="image-box">
+      <img src="doc3.jpg" alt="Document 3" class="project-image" />
+    </div>
+    <div class="image-box">
+      <video class="project-image" autoplay loop muted playsinline>
+        <source src="rotaSW.mp4" type="video/mp4" />
+        Votre navigateur ne supporte pas la lecture de vidéo.
+      </video>
+    </div>
+  </div>
+
+  <!-- PDF affiché en bas dans une fenêtre scrollable -->
+  <h2 style="text-align: center; margin-top: 100px;">Cahier des charges</h2>
+  <div id="pdf-viewer"></div>
+</main>
+
+<script>
+  const url = 'cahierPDF.pdf';
+
+  const container = document.getElementById('pdf-viewer');
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  pdfjsLib.getDocument(url).promise.then(pdf => {
+    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+      pdf.getPage(pageNum).then(page => {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        const viewport = page.getViewport({ scale: 1.3 });
+
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        container.appendChild(canvas);
+
+        page.render({
+          canvasContext: context,
+          viewport: viewport
+        });
+      });
+    }
+  }).catch(error => {
+    container.innerHTML = `<p style="color:red; text-align:center;">Erreur : le PDF n’a pas pu être chargé. Vérifie le nom du fichier.</p>`;
+    console.error('Erreur PDF :', error);
+  });
+</script>
+
+</body>
+</html>
