@@ -28,6 +28,37 @@
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
       background-color: white;
     }
+
+    .images-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin: 40px auto;
+    }
+
+    .image-box {
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .image-box:hover {
+      transform: scale(1.05);
+    }
+
+    .project-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-style: italic;
+      color: #555;
+    }
   </style>
 </head>
 <body>
@@ -91,6 +122,28 @@
   <!-- PDF affiché en bas dans une fenêtre scrollable -->
   <h2 style="text-align: center; margin-top: 100px;">Cahier des charges</h2>
   <div id="pdf-viewer"></div>
+
+  <!-- Résultat final -->
+  <h2 style="text-align: center; margin-top: 100px;">LE RÉSULTAT FINAL</h2>
+
+  <div class="images-container">
+    <div class="image-box">
+      <img src="doc4.png" alt="Document 4" class="project-image" />
+    </div>
+    <div class="image-box">
+      <img src="doc5.png" alt="Document 5" class="project-image" />
+    </div>
+  </div>
+
+  <div class="images-container">
+    <div class="image-box">
+      <img src="doc6.png" alt="Document 6" class="project-image" />
+    </div>
+    <div class="image-box">
+      <img src="doc7.png" alt="Document 7" class="project-image" />
+    </div>
+  </div>
+
 </main>
 
 <script>
